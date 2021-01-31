@@ -5,6 +5,8 @@ Adds support for SIM800L module to [mbed os network stack](https://os.mbed.com/d
 
 Only AT mode is supported.
 
+Though the cellular module is still quite popular, its important to note that 2G is being phased out in some countries, so this module might not be a good choice for you.
+
 ## Settings
 
 Requires a minimum of the following settings in your [mbed_app.json](https://os.mbed.com/docs/mbed-os/latest/program-setup/advanced-configuration.html)
