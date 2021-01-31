@@ -8,27 +8,27 @@
 namespace mbed {
 
 class SIM800_CellularContext: public AT_CellularContext {
-public:
-    SIM800_CellularContext(ATHandler &at, CellularDevice *device, const char *apn, bool cp_req = false, bool nonip_req = false);
+  public:
+    SIM800_CellularContext(ATHandler &at, CellularDevice* device, const char* apn, bool cp_req = false, bool nonip_req = false);
     virtual ~SIM800_CellularContext();
 
     virtual void do_connect();
 
     virtual void do_disconnect();
 
-    virtual nsapi_error_t get_gateway(SocketAddress *addr);
+    virtual nsapi_error_t get_gateway(SocketAddress* addr);
 
-    const char *get_apn(void);
+    const char* get_apn(void);
 
-    const char *get_uname(void);
+    const char* get_uname(void);
 
-    const char *get_pwd(void);
+    const char* get_pwd(void);
 
     CellularContext::AuthenticationType get_auth(void);
 
- 
-protected:
-    virtual NetworkStack *get_stack();
+
+  protected:
+    virtual NetworkStack* get_stack();
 
     /** Connect the on board IP stack of the modem.
      *
@@ -37,7 +37,7 @@ protected:
 
     nsapi_error_t define_context();
 
-private:
+  private:
 
     /** Length of IMSI buffer.
      */
@@ -58,7 +58,7 @@ private:
      * @return         True if successful, otherwise false.
      */
 
-    bool activate_profile(const char *apn, const char *username, const char *password, AuthenticationType auth);
+    bool activate_profile(const char* apn, const char* username, const char* password, AuthenticationType auth);
 
 
     /** Disconnect the on board IP stack of the modem.
@@ -69,7 +69,7 @@ private:
 
     /** Read IMSI of modem.
      */
-    nsapi_error_t get_imsi(char *imsi);
+    nsapi_error_t get_imsi(char* imsi);
 };
 
 } /* namespace mbed */

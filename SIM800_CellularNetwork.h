@@ -9,9 +9,9 @@ namespace mbed {
 
 class SIM800_CellularNetwork : public AT_CellularNetwork {
 
-public:
+  public:
     SIM800_CellularNetwork(ATHandler &atHandler, AT_CellularDevice &device);
-    
+
     virtual ~SIM800_CellularNetwork();
 
 };

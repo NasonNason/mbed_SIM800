@@ -11,21 +11,21 @@ using namespace std::chrono;
 namespace mbed {
 
 class SIM800_CellularStack : public AT_CellularStack {
-public:
+  public:
     SIM800_CellularStack(ATHandler &atHandler, int cid, nsapi_ip_stack_t stack_type, AT_CellularDevice &device);
-    
+
     virtual ~SIM800_CellularStack();
 
-    virtual nsapi_error_t get_ip_address(SocketAddress *address);
+    virtual nsapi_error_t get_ip_address(SocketAddress* address);
 
-    virtual nsapi_error_t gethostbyname(const char *host,
-                                        SocketAddress *address, nsapi_version_t version = NSAPI_UNSPEC, const char *interface_name = NULL);
+    virtual nsapi_error_t gethostbyname(const char* host,
+                                        SocketAddress* address, nsapi_version_t version = NSAPI_UNSPEC, const char* interface_name = NULL);
 
-protected:
+  protected:
     virtual nsapi_error_t socket_listen(nsapi_socket_t handle, int backlog);
 
     virtual nsapi_error_t socket_accept(nsapi_socket_t server,
-                                        nsapi_socket_t *handle, SocketAddress *address = 0);
+                                        nsapi_socket_t* handle, SocketAddress* address = 0);
 
     /** The profile to use (on board the modem).
      */
@@ -47,33 +47,33 @@ protected:
      */
     static const int SIM800_MAX_PACKET_SIZE = 1024;
 
-    virtual nsapi_error_t create_socket_impl(CellularSocket *socket);
+    virtual nsapi_error_t create_socket_impl(CellularSocket* socket);
 
     virtual nsapi_error_t socket_connect(nsapi_socket_t handle, const SocketAddress &address);
 
-    virtual nsapi_size_or_error_t socket_sendto_impl(CellularSocket *socket, const SocketAddress &address,
-                                                     const void *data, nsapi_size_t size);
+    virtual nsapi_size_or_error_t socket_sendto_impl(CellularSocket* socket, const SocketAddress &address,
+                                                     const void* data, nsapi_size_t size);
 
-    virtual nsapi_size_or_error_t socket_recvfrom_impl(CellularSocket *socket, SocketAddress *address,
-                                                       void *buffer, nsapi_size_t size);
+    virtual nsapi_size_or_error_t socket_recvfrom_impl(CellularSocket* socket, SocketAddress* address,
+                                                       void* buffer, nsapi_size_t size);
 
     virtual nsapi_error_t socket_close_impl(int sock_id);
 
-private:
+  private:
 
     /** Find a socket from the list.
      *
      * @param id       Socket ID.
      * @return         Socket if True, otherwise NULL.
      */
-    CellularSocket *find_socket(int id = SOCKET_UNUSED);
+    CellularSocket* find_socket(int id = SOCKET_UNUSED);
 
     /** Clear out the storage for a socket.
      *
      * @param id       Cellular Socket.
      * @return         None
      */
-    void clear_socket(CellularSocket *socket);
+    void clear_socket(CellularSocket* socket);
 };
 } // namespace mbed
 #endif /* SIM800_CELLULARSTACK_H_ */
